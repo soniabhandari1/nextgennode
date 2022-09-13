@@ -10,3 +10,9 @@ create table user(
     );
 
     insert into user(name,contactNumber,email,password,status,role)values('Admin','9988461939','vinaybhandari@nextgenapps.in','123456','true','admin');
+
+    create table category(
+        id int NOT NULL Auto_Increment,
+        name varchar(250) NOT NULL,
+        primary key(id)
+    );
