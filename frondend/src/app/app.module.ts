@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import{NgxUiLoaderModule,NgxUiLoaderConfig,SPINNER,PB_DIRECTION}from 'ngx-ui-loader'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -16,7 +16,22 @@ import { AppSidebarComponent } from './layouts/full/sidebar/sidebar.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
-import { TokenInterceptorInterceptor } from './services/token-interceptor.interceptor';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+//import { TokenInterceptorInterceptor } from './services/token-interceptor.interceptor';
+
+const ngxUiLoaderConfig:NgxUiLoaderConfig={
+  text:'Loading....',
+  textColor:'#ffffff',
+  textPosition:'center-center',
+  pbColor:'blue',//loading page
+  bgsColor:'red',
+  fgsColor:'green', //spinner 
+  fgsType:SPINNER.ballSpinClockwise,
+  fgsSize:100,
+  pbDirection:PB_DIRECTION.leftToRight,
+  pbThickness:5
+
+}
 
 @NgModule({
   declarations: [
@@ -27,7 +42,8 @@ import { TokenInterceptorInterceptor } from './services/token-interceptor.interc
     AppHeaderComponent,
     AppSidebarComponent,
     SignupComponent,
-    LoginComponent
+    LoginComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -38,9 +54,10 @@ import { TokenInterceptorInterceptor } from './services/token-interceptor.interc
     MaterialModule,
     FlexLayoutModule,
     SharedModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxUiLoaderModule.forRoot(ngxUiLoaderConfig)
   ],
-  providers: [HttpClientModule,{provide:HTTP_INTERCEPTORS,useClass:TokenInterceptorInterceptor,multi:true}],
+  //providers: [HttpClientModule,{provide:HTTP_INTERCEPTORS,useClass:TokenInterceptorInterceptor,multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -39,4 +39,10 @@ export class UserService {
   update(data:any){
     return this.httpClient.patch(this.url+"/user/update",data);
   }
+
+forgotPassword(data:any){
+  return this.httpClient.post(this.url+'/user/forgotPassword',data,{
+    headers : new HttpHeaders().set('Content-Type','application/json')
+  })
+}
 }
