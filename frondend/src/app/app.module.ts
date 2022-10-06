@@ -17,7 +17,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-//import { TokenInterceptorInterceptor } from './services/token-interceptor.interceptor';
+import { TokenInterceptorInterceptor } from './services/token-interceptor.interceptor';
 
 const ngxUiLoaderConfig:NgxUiLoaderConfig={
   text:'Loading....',
@@ -57,7 +57,7 @@ const ngxUiLoaderConfig:NgxUiLoaderConfig={
     HttpClientModule,
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig)
   ],
-  //providers: [HttpClientModule,{provide:HTTP_INTERCEPTORS,useClass:TokenInterceptorInterceptor,multi:true}],
+  providers: [HttpClientModule,{provide:HTTP_INTERCEPTORS,useClass:TokenInterceptorInterceptor,multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
