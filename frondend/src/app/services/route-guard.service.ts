@@ -23,7 +23,7 @@ export class RouteGuardService {
       this.router.navigate(['/'])
     }
 
-    let checkRole=false
+    let checkRole;
     for(let i=0;i < expectedRoleArray.length ; i++){
       if(expectedRoleArray[i]==tokenPayload.role)
       checkRole=true
@@ -35,7 +35,7 @@ export class RouteGuardService {
       }
     
       this.snackbar.openSnackBar(GlobalConstant.unauthorized,GlobalConstant.error);
-      this.router.navigate(['/cafe/dashboard']);
+      this.router.navigate(['/dashboard']);
       return false;                           
     }
     else{
