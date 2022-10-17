@@ -1,0 +1,659 @@
+{
+	"info": {
+		"_postman_id": "1976a7d5-1e9c-4819-b7da-7a8825cec636",
+		"name": "cafe manageament system",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11936468"
+	},
+	"item": [
+		{
+			"name": "localhost:3000/user/signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"sonia\",\r\n    \"contactNumber\":\"9803962109\",\r\n    \"email\":\"soniabhandari19nov@gmail.com\",\r\n    \"password\":\"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/user/signup",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/user/login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"vinaybhandari@nextgenapps.in\",\r\n    \"password\":\"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/user/login",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/user/forgotPassword",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"a.h@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/user/forgotPassword",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"forgotPassword"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/user/get",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZpbmF5YmhhbmRhcmlAbmV4dGdlbmFwcHMuaW4iLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTY2Mjk3NDkwNywiZXhwIjoxNjYzMDAzNzA3fQ.gtIvrBVotici9YK2fBwg-OkEL7KAjS_xr5jylbRamXU",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/user/get",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"get"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/category/add",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZpbmF5YmhhbmRhcmlAbmV4dGdlbmFwcHMuaW4iLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTY2MzA1ODU5MSwiZXhwIjoxNjYzMDg3MzkxfQ.iLcKsKddDUz8ja4jhcVyhFfjknkg1PjO_nO4DuRs95w",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"BackEndDeveloper\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/category/add",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"category",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/category/get",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZpbmF5YmhhbmRhcmlAbmV4dGdlbmFwcHMuaW4iLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTY2MzA1OTIxMSwiZXhwIjoxNjYzMDg4MDExfQ.nPgdpSfQwBixlzE58PNLFybWdSdZzk4HBtOY2MyxLEI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/category/get",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"category",
+						"get"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/category/update",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZpbmF5YmhhbmRhcmlAbmV4dGdlbmFwcHMuaW4iLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTY2MzA1OTU3OCwiZXhwIjoxNjYzMDg4Mzc4fQ.YQoNLarfNJhXrODCF_CDcinx7p9QBN8kFSBSF1-54nM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":1,\r\n\"name\":\"Designer\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/category/update",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"category",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/user/changePassword",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNvbmlhYmhhbmRhcmkxOW5vdkBnbWFpbC5jb20iLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTY2MzAwMjQ3MywiZXhwIjoxNjYzMDMxMjczfQ.7Csc6zsTznQTB8WNzF9wgZRk373IPCIYYZ79tBidHx8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"oldPassword\":1234567,\r\n    \"newPassword\":123456\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/user/changePassword",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"changePassword"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/product/add",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZpbmF5YmhhbmRhcmlAbmV4dGdlbmFwcHMuaW4iLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTY2MzA4NzU4NSwiZXhwIjoxNjYzMTE2Mzg1fQ.BMCcDHCa0nG3T_Tc1qDHbHQQ1ZfEf3QCsJcEzzOTJng",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"karisma\",\r\n    \"categoryId\":4,\r\n    \"description\":\"figma\",\r\n    \"price\":10000\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/product/add",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"product",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/product/get",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZpbmF5YmhhbmRhcmlAbmV4dGdlbmFwcHMuaW4iLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTY2MzE0NTAwNCwiZXhwIjoxNjYzMTczODA0fQ.Hty6XaQtETWNae9dnOiX8WJu7cPnO7dCC42vwiWpBz0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/product/getByCategory/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"product",
+						"getByCategory",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/product/getByCategory/1",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZpbmF5YmhhbmRhcmlAbmV4dGdlbmFwcHMuaW4iLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTY2MzE0NTE0NiwiZXhwIjoxNjYzMTczOTQ2fQ._laqykOkdx3tqP7rFzmY7yELdFVK6qSocUtoAEGF7NA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/product/getByCategory/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"product",
+						"getByCategory",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/product/getById/1",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZpbmF5YmhhbmRhcmlAbmV4dGdlbmFwcHMuaW4iLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTY2MzE0NTE0NiwiZXhwIjoxNjYzMTczOTQ2fQ._laqykOkdx3tqP7rFzmY7yELdFVK6qSocUtoAEGF7NA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/product/getById/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"product",
+						"getById",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/product/update",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZpbmF5YmhhbmRhcmlAbmV4dGdlbmFwcHMuaW4iLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTY2MzE0NTE0NiwiZXhwIjoxNjYzMTczOTQ2fQ._laqykOkdx3tqP7rFzmY7yELdFVK6qSocUtoAEGF7NA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"id\":4,\r\n                \"name\": \"karisma\",\r\n        \"categoryId\": 1,\r\n        \"description\": \"figma design\",\r\n        \"price\": 5000,\r\n        \"status\": \"false\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/product/update",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"product",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/product/updateStatus",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZpbmF5YmhhbmRhcmlAbmV4dGdlbmFwcHMuaW4iLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTY2MzE0NTYwNCwiZXhwIjoxNjYzMTc0NDA0fQ.ksRl12cGaWSUwbsWDmJv3FNApOuW2xpj1sCRWinVGGc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":4,\r\n    \"status\":\"false\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/product/updateStatus",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"product",
+						"updateStatus"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/bill/generateReport",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZpbmF5YmhhbmRhcmlAbmV4dGdlbmFwcHMuaW4iLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTY2MzM0MDc4MCwiZXhwIjoxNjYzMzY5NTgwfQ.P9ulk7HBBTnGKruScB_uOTHEnM-F5EfcGaHx-xBGLqs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"sonia\",\r\n    \"email\":\"soniabhandari19nov@gmail.com\",\r\n    \"contactNumber\":\"9803962109\",\r\n    \"paymentMethod\":\"cash\",\r\n    \"total\":123,\r\n    \"productDetails\":\"[{\\\"id\\\":1,\\\"name\\\":\\\"niwi\\\",\\\"price\\\":100000,\\\"category\\\":\\\"BackEnd\\\",\\\"quantity\\\":\\\"1\\\"}]\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/bill/generateReport",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"bill",
+						"generateReport"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/bill/getPdf",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZpbmF5YmhhbmRhcmlAbmV4dGdlbmFwcHMuaW4iLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTY2MzM0MTUyMSwiZXhwIjoxNjYzMzcwMzIxfQ.ywfBvfmsayrrAb_k5uWRCLJHLjBg3ELlKCB2V8tqXE8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"uuid\":\"0ea41457-d33e-4c47-a44e-8a2ea389cca1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/bill/getPdf",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"bill",
+						"getPdf"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/bill/getBills",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZpbmF5YmhhbmRhcmlAbmV4dGdlbmFwcHMuaW4iLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTY2MzM0MjE4MSwiZXhwIjoxNjYzMzcwOTgxfQ.f6U3WxAP8HVOUHphHpGrPwO2kyqNTR1MyyTJlkElBjo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/bill/getBills",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"bill",
+						"getBills"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/bill/delete/14",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZpbmF5YmhhbmRhcmlAbmV4dGdlbmFwcHMuaW4iLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTY2MzM0MjMzNSwiZXhwIjoxNjYzMzcxMTM1fQ.lIA-le-l00iwmfvui2dWu8DMBp07hA9TF3dZKtliAq8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/bill/delete/14",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"bill",
+						"delete",
+						"14"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/dashboard/details",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZpbmF5YmhhbmRhcmlAbmV4dGdlbmFwcHMuaW4iLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTY2MzU3ODM5NywiZXhwIjoxNjYzNjA3MTk3fQ.wq7cmNxhGn6SUhDlaoAeZSX8Kqe5tZHp1michBQ-7zY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/dashboard/details",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"dashboard",
+						"details"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/user/checkToken",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZpbmF5YmhhbmRhcmlAbmV4dGdlbmFwcHMuaW4iLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTY2NDg4NDMyNiwiZXhwIjoxNjY0OTEzMTI2fQ.rgKuqzlr83NrubqvBOKoefbs7OMreE4EThEpfEf6Uhc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/user/checkToken",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"checkToken"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

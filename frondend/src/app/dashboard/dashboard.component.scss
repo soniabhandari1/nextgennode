@@ -1,4 +1,5 @@
-.position-relative {
+.position-re
+lative {
 	position: relative;
 }
 
@@ -70,6 +71,28 @@ body {
   
   .button:hover {
     background-color: #555;
+  }
+  .mat-icon{
+    background-color: #e53935;
+    color:#ffff
+  }
+  .navbar-fixed-top{
+    color:#ffff
+  }
+
+  .wrapper {
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    background-color: #e53935;
+  }
+
+  
+  
+  nav {
+    display: flex;
+    width: 90%;
   }
   
   @media screen and (max-width: 650px) {

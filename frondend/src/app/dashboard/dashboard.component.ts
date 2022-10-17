@@ -1,4 +1,5 @@
 import { Component, AfterViewInit } from '@angular/core';
+import { MatSliderModule } from '@angular/material/slider';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { DashboardService } from '../services/dashboard.service';
 import { SnackbarService } from '../services/snackbar.service';
@@ -12,12 +13,14 @@ import { GlobalConstant } from '../shared/global-constants';
 export class DashboardComponent implements AfterViewInit {
   responseMessage: any;
   data: any;
+  isOpen = false;
   ngAfterViewInit() {}
 
   constructor(
     private dashboardService: DashboardService,
     private snackbarService: SnackbarService,
-    private ngxService: NgxUiLoaderService
+    private ngxService: NgxUiLoaderService,
+    private sliderService:MatSliderModule
   ) {
     this.ngxService.start();
     this.dashboardData();
@@ -44,4 +47,11 @@ export class DashboardComponent implements AfterViewInit {
       }
     );
   }
+
+  toggleMenu(){
+    if (this.isOpen == true) {
+      this.sliderService;
+      console.log('mil gya');
+    }; // toggle it as you want
+   }
 }

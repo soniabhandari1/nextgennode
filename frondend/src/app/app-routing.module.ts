@@ -3,43 +3,49 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
 import { FullComponent } from './layouts/full/full.component';
+import { ChangePasswordComponent } from './material-component/dialog/change-password/change-password.component';
 import { RouteGuardService } from './services/route-guard.service';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   {
     path: 'dashboard',
-    component: DashboardComponent,
+    component: FullComponent,
     children: [
       {
         path: '',
         redirectTo: '',
         pathMatch: 'full',
+        component: DashboardComponent,
       },
+
       {
         path: '',
-        loadChildren:
-          () => import('./material-component/material.module').then(m => m.MaterialComponentsModule),
-          canActivate:[RouteGuardService],
-          data :{
-            expectedRole:['admin','user']
-          }
+        loadChildren: () =>
+          import('./material-component/material.module').then(
+            (m) => m.MaterialComponentsModule
+          ),
+        canActivate: [RouteGuardService],
+        data: {
+          expectedRole: ['admin', 'user'],
         },
+      },
       {
         path: 'dashboard',
-        loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule),
-        canActivate:[RouteGuardService],
-        data :{
-          expectedRole:['admin','user']
-        }
-      }
-    ]
+        loadChildren: () =>
+          import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
+        canActivate: [RouteGuardService],
+        data: {
+          expectedRole: ['admin', 'user'],
+        },
+      },
+    ],
   },
-  { path: '**', component: HomeComponent }
+  { path: '**', component: HomeComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
