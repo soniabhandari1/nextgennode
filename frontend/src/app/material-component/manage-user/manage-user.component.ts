@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { UserService } from 'src/app/services/user.service';
 import { GlobalConstant } from 'src/app/shared/global-constants';
@@ -14,17 +15,20 @@ export class ManageUserComponent implements OnInit {
   dataSource: any;
   responseMessage: any;
 
-  constructor(private userService: UserService, private snackbar: SnackbarService) { }
+  constructor(private userService: UserService, private snackbar: SnackbarService,private ngxService:NgxUiLoaderService) { }
 
   ngOnInit(): void {
+    this.ngxService.start();
     this.tableData();
   }
 
 
   tableData() {
     this.userService.getUsers().subscribe((res: any) => {
+      this.ngxService.stop();
       this.dataSource = new MatTableDataSource(res);
     }, (err: any) => {
+      this.ngxService.stop();
       if (err.error?.message) {
         this.responseMessage = err.error?.message;
       }
@@ -47,9 +51,11 @@ export class ManageUserComponent implements OnInit {
     }
 
     this.userService.update(data).subscribe((res:any)=>{
+      this.ngxService.stop();
       this.responseMessage = res?.message;
       this.snackbar.openSnackBar(this.responseMessage,"success");
     },(err:any)=>{
+      this.ngxService.stop();
       if(err.error?.message){
         this.responseMessage = err.error?.message;
       }

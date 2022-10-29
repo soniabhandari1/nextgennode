@@ -5,6 +5,10 @@ import { HomeComponent } from './home/home.component';
 import { FullComponent } from './layouts/full/full.component';
 import { ChangePasswordComponent } from './material-component/dialog/change-password/change-password.component';
 import { ManageCategoryComponent } from './material-component/manage-category/manage-category.component';
+import { ManageOrderComponent } from './material-component/manage-order/manage-order.component';
+import { ManageProductComponent } from './material-component/manage-product/manage-product.component';
+import { ManageUserComponent } from './material-component/manage-user/manage-user.component';
+import { ViewBillComponent } from './material-component/view-bill/view-bill.component';
 import { RouteGuardService } from './services/route-guard.service';
 
 const routes: Routes = [
@@ -45,6 +49,12 @@ const routes: Routes = [
     ],
   },
   { path: 'category', component: ManageCategoryComponent },
+  { path:'product',component:ManageProductComponent},
+  { path:'order',component:ManageOrderComponent},
+  { path:'bill',component:ViewBillComponent},
+  { path:'user',component:ManageUserComponent},
+
+
   { path: '**', component: HomeComponent },
 ];
 

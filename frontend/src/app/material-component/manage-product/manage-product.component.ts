@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 //import { element } from 'protractor';
 import { ProductService } from 'src/app/services/product.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
@@ -18,16 +19,20 @@ export class ManageProductComponent implements OnInit {
   displayedColumns: string[] = ['name','categoryName','description','price','edit'];
   dataSource:any;
   responseMessage:any;
-  constructor(private productService: ProductService,private dialog:MatDialog,private router:Router,
+  constructor(private productService: ProductService,private ngxService:NgxUiLoaderService,private dialog:MatDialog,private router:Router,
     private snackbar:SnackbarService) { }
 
   ngOnInit(): void {
+    this.ngxService.start();
     this.tableData();
   }
 
-  tableData(){ this.productService.getCategorys().subscribe((res:any)=>{
+  tableData(){ this.productService.getProducts().subscribe((res:any)=>{
+    this.ngxService.stop();
     this.dataSource = new MatTableDataSource(res);
   },(err:any)=>{
+    this.ngxService.stop();
+    console.log(err);
     if(err.error?.message){
       this.responseMessage = err.error?.message;
     }
@@ -43,7 +48,7 @@ applyFilter(event:Event){
   this.dataSource.filter = filterValue.trim().toLowerCase();
 }
 
-add(){
+handleAddAction(){
   const dialogConfig = new MatDialogConfig();
     dialogConfig.data = {
       action:'Add'
@@ -58,7 +63,7 @@ add(){
     })
 }
 
-edit(element:any){
+handleEditAction(element:any){
   const dialogConfig = new MatDialogConfig();
   dialogConfig.data = {
     action:'Edit',
@@ -74,7 +79,7 @@ edit(element:any){
   })
 }
 
-delete(element:any){
+handleDeleteAction(element:any){
   const dialogConfig = new MatDialogConfig();
     dialogConfig.data = {
       message:'delete ' + element.name + ' product ?'
@@ -89,10 +94,13 @@ delete(element:any){
 
 deleteProduct(id:any){
   this.productService.delete(id).subscribe((res:any)=>{
+    this.ngxService.stop();
     this.tableData();
     this.responseMessage = res.message;
     this.snackbar.openSnackBar(this.responseMessage,"success");
   },(err:any)=>{
+    this.ngxService.stop();
+    console.log(err);
     if(err.error?.message){
       this.responseMessage = err.error?.message;
     }
@@ -109,9 +117,12 @@ onChange(status:any,id:any){
     id: id
   }
   this.productService.updateStatus(data).subscribe((res:any)=>{
+    this.ngxService.stop();
     this.responseMessage = res.message;
     this.snackbar.openSnackBar(this.responseMessage,"success");
   },(err)=>{
+    this.ngxService.stop();
+    console.log(err);
     if(err.error?.message){
       this.responseMessage = err.error?.message;
     }
@@ -120,5 +131,5 @@ onChange(status:any,id:any){
     }
     this.snackbar.openSnackBar(this.responseMessage,GlobalConstant.error);
   })
-}
+ }
 }

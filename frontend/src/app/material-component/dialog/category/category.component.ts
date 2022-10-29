@@ -23,7 +23,7 @@ export class CategoryComponent implements OnInit {
               private formBuilder:FormBuilder,
               private categoryService:CategoryService,
               public dialogRef:MatDialogRef<CategoryComponent>,
-              private snackbar:SnackbarService) { }
+              private snackbarService:SnackbarService) { }
 
   ngOnInit(): void {
     this.categoryForm = this.formBuilder.group({
@@ -57,7 +57,7 @@ export class CategoryComponent implements OnInit {
       this.dialogRef.close();
       this.onEditCategory.emit();
       this.responseMessage = res.message;
-      this.snackbar.openSnackBar(this.responseMessage,"success");
+      this.snackbarService.openSnackBar(this.responseMessage,"success");
     },(err:any)=>{
       this.dialogRef.close();
       if(err.error?.message){
@@ -66,7 +66,7 @@ export class CategoryComponent implements OnInit {
       else{
         this.responseMessage = GlobalConstant.genericError;
       }
-      this.snackbar.openSnackBar(this.responseMessage,GlobalConstant.error);
+      this.snackbarService.openSnackBar(this.responseMessage,GlobalConstant.error);
     })
   }
 
@@ -80,7 +80,7 @@ export class CategoryComponent implements OnInit {
       this.dialogRef.close();
       this.onAddCategory.emit();
       this.responseMessage = res.message;
-      this.snackbar.openSnackBar(this.responseMessage,"success");
+      this.snackbarService.openSnackBar(this.responseMessage,"success");
     },(err:any)=>{
       this.dialogRef.close();
       if(err.error?.message){
@@ -89,7 +89,7 @@ export class CategoryComponent implements OnInit {
       else{
         this.responseMessage = GlobalConstant.genericError;
       }
-      this.snackbar.openSnackBar(this.responseMessage,GlobalConstant.error);
+      this.snackbarService.openSnackBar(this.responseMessage,GlobalConstant.error);
     })
   }
 

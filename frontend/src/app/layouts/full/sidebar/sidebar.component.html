@@ -3,11 +3,11 @@
     appAccordionLink
     *ngFor="let menuitem of menuItems.getMenuitem()"
     routerLinkActive="selected"
-    group="{{ menuitem.state }}"
+    group="{{menuitem.state}}"
   >
     <a
       appAccordionToggle
-      [routerLink]="['/menuitem.state']"
+      routerLink="/{{menuitem.state}}"
       *ngIf="menuitem.role == '' || menuitem.role == tokenPayload.role"
     >
       <mat-icon>{{ menuitem.icon }}</mat-icon>

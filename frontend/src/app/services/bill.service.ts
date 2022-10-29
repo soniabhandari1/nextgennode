@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 
@@ -11,7 +11,9 @@ export class BillService {
   constructor(private httpClient:HttpClient){}
 
   generateReport(data:any){
-    return this.httpClient.post(this.url+'/bill/generateReport/',data)
+    return this.httpClient.post(this.url+'/bill/generateReport/',data,{
+      headers:new HttpHeaders().set('Content-Type','application/json')
+    })
   }
   
   getPdf(data:any):Observable<Blob>{
@@ -23,6 +25,8 @@ export class BillService {
   }
 
   delete(id:any){
-    return this.httpClient.delete(this.url+'/bill/delete/'+id)
+    return this.httpClient.delete(this.url+'/bill/delete/'+id,{
+      headers:new HttpHeaders().set('Content-Type','application/json')
+    })
   }
 }

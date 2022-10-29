@@ -20,6 +20,7 @@ export class UserService {
 
   login(data:any){
     return this.httpClient.post(this.url+'/user/login',data,{
+
       headers : new HttpHeaders().set('Content-Type','application/json')
     })
   }
@@ -39,7 +40,8 @@ export class UserService {
   }
 
   update(data:any){
-    return this.httpClient.patch(this.url+"/user/update",data);
+    return this.httpClient.patch(this.url+"/user/update",data,{
+      headers : new HttpHeaders().set('Content-Type','application/json')});
   }
 
 forgotPassword(data:any){

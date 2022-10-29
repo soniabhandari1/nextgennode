@@ -47,33 +47,33 @@ export class ManageCategoryComponent implements OnInit {
   }
 
   handleAddAction(){
-    // const dialogConfig = new MatDialogConfig();
-    // dialogConfig.data = {
-    //   action:'Add'
-    // }
-    // dialogConfig.width="850px";
-    // const dialogRef = this.dialog.open(CategoryComponent,dialogConfig);
-    // this.router.events.subscribe(()=>{
-    //   dialogRef.close();
-    // });
-    // const sub = dialogRef.componentInstance.onAddCategory.subscribe((res)=>{
-    //   this.tableData();
-    // })
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = {
+      action:'Add'
+    }
+    dialogConfig.width="850px";
+    const dialogRef = this.dialog.open(CategoryComponent,dialogConfig);
+    this.router.events.subscribe(()=>{
+      dialogRef.close();
+    });
+    const sub = dialogRef.componentInstance.onAddCategory.subscribe((res)=>{
+      this.tableData();
+    })
   }
   handleEditAction(element:any){
-    // const dialogConfig = new MatDialogConfig();
-    // dialogConfig.data = {
-    //   action:'Edit',
-    //   data:element
-    // }
-    // dialogConfig.width="850px";
-    // const dialogRef = this.dialog.open(CategoryComponent,dialogConfig);
-    // this.router.events.subscribe(()=>{
-    //   dialogRef.close();
-    // });
-    // const sub = dialogRef.componentInstance.onEditCategory.subscribe((res)=>{
-    //   this.tableData();
-    // })
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = {
+      action:'Edit',
+      data:element
+    }
+    dialogConfig.width="850px";
+    const dialogRef = this.dialog.open(CategoryComponent,dialogConfig);
+    this.router.events.subscribe(()=>{
+      dialogRef.close();
+    });
+    const sub = dialogRef.componentInstance.onEditCategory.subscribe((res)=>{
+      this.tableData();
+    })
   }
 
 }

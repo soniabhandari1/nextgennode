@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { BillService } from 'src/app/services/bill.service';
 import { CategoryService } from 'src/app/services/category.service';
 import { ProductService } from 'src/app/services/product.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { GlobalConstant } from 'src/app/shared/global-constants';
-// import { saveAs } from 'file-saver/FileSaver';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-manage-order',
@@ -23,9 +24,10 @@ export class ManageOrderComponent implements OnInit {
   price: any;
   totalAmount: number = 0;
 
-  constructor(private formBuilder: FormBuilder,private router:Router, private categoryService: CategoryService, private productService: ProductService, private snackbarService: SnackbarService, private billService: BillService) { }
+  constructor(private formBuilder: FormBuilder,private router:Router, private categoryService: CategoryService, private productService: ProductService, private snackbarService: SnackbarService, private billService: BillService,private ngxService:NgxUiLoaderService) { }
 
   ngOnInit(): void {
+    this.ngxService.start();
     this.getCategorys();
     this.manageOrderForm = this.formBuilder.group({
       name: [null, [Validators.required, Validators.pattern(GlobalConstant.nameRegex)]],
@@ -42,8 +44,10 @@ export class ManageOrderComponent implements OnInit {
 
   getCategorys(){
     this.categoryService.getCategorys().subscribe((res:any)=>{
+      this.ngxService.stop();
       this.categorys = res;
     },(err:any)=>{
+      this.ngxService.stop();
       if(err.error?.message){
         this.responseMessage = err.error?.message;
       }
@@ -57,11 +61,13 @@ export class ManageOrderComponent implements OnInit {
   getProductByCategory(value:any){
     console.log(value.id);
     this.productService.getProductsByCategory(value.id).subscribe((res:any)=>{
+      this.ngxService.stop();
       this.products = res;
       this.manageOrderForm.controls['price'].setValue('');
       this.manageOrderForm.controls['quantity'].setValue('');
       this.manageOrderForm.controls['total'].setValue(0);
     },(err:any)=>{
+      this.ngxService.stop();
       if(err.error?.message){
         this.responseMessage = err.error?.message;
       }
@@ -74,11 +80,13 @@ export class ManageOrderComponent implements OnInit {
 
   getProductDetails(value:any){
     this.productService.getProductsById(value.id).subscribe((res:any)=>{
+      this.ngxService.stop();
       this.price = res.price;
       this.manageOrderForm.controls['price'].setValue(res.price);
       this.manageOrderForm.controls['quantity'].setValue('1');
       this.manageOrderForm.controls['total'].setValue(this.price*1);
     },(err:any)=>{
+      this.ngxService.stop();
       if(err.error?.message){
         this.responseMessage = err.error?.message;
       }
@@ -142,13 +150,14 @@ export class ManageOrderComponent implements OnInit {
     }
   }
 
-  handleDelteAction(value:any,element:any){
+  handleDeleteAction(value:any,element:any){
     this.totalAmount = this.totalAmount - element.total;
     this.dataSource.splice(value,1);
     this.dataSource = [...this.dataSource];
   }
 
   submitAction(){
+    this.ngxService.start();
     var formData = this.manageOrderForm.value;
     var data = {
       name:formData.name,
@@ -160,11 +169,13 @@ export class ManageOrderComponent implements OnInit {
       productDetails: JSON.stringify(this.dataSource)
     }
     this.billService.generateReport(data).subscribe((res:any)=>{
+      //this.ngxService.stop();
       this.downloadFile(res?.uuid);
       this.manageOrderForm.reset();
       this.dataSource = [];
       this.totalAmount = 0;
     },(err:any)=>{
+      this.ngxService.stop();
       if(err.error?.message){
         this.responseMessage = err.error?.message;
       }
@@ -181,7 +192,8 @@ export class ManageOrderComponent implements OnInit {
     }
 
     this.billService.getPdf(data).subscribe((res:any)=>{
-      // saveAs(res,fileName+'.pdf');
+      saveAs(res,fileName+'.pdf');
+      this.ngxService.stop();
       this.router.navigate(['file:///C:/Users/dell/Desktop/nextgennode/backend/generated_pdf/'+data.uuid +'.pdf'])
       
     })

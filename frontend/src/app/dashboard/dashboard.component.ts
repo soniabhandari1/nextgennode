@@ -51,7 +51,7 @@ export class DashboardComponent implements AfterViewInit {
   toggleMenu(){
     if (this.isOpen == true) {
       this.sliderService;
-      console.log('mil gya');
-    }; // toggle it as you want
+      
+    }; 
    }
 }
